@@ -11,3 +11,7 @@ RSpec::Core::RakeTask.new do |t|
   t.pattern = "**/*_spec.rb" # don't need this, it's default.
   # Put spec opts in a file named .rspec in root
 end
+
+task :say_hi do
+	puts "hi"
+end
