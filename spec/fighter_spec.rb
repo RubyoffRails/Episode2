@@ -14,4 +14,8 @@ describe Fighter do
 	it "should have a name" do
 		Fighter.new("Mike Tyson").name.should eq("Mike Tyson")
 	end
+
+	it "should return a valid move" do
+		subject.move.should be_a(Move)
+	end
 end
