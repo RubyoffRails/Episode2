@@ -9,6 +9,6 @@ class Turn
 
 	private
 	def determine_winner
-		[@move_a, @move_b].sample
+		@move_a.ranking > @move_b.ranking ? @move_a : @move_b
 	end	
 end
