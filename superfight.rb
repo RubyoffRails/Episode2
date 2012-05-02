@@ -1,11 +1,10 @@
 Dir["./lib/*.rb"].each {|file| require file }
 
+fighter_a = "Nancy Botwin" 
+fighter_b = "Celia Hodes" 
 
-puts "What is your first fighter's name?"
-fighter_a = $stdin.gets
-puts "What is your second fighter's name?"
-fighter_b = $stdin.gets
-
-match = Match.new(Fighter.new(fighter_a), Fighter.new(fighter_b))
-
-puts "The winner of match is ....... #{match.winner.name}"
+for i in 1..13 do
+  match = Match.new(Fighter.new(fighter_a), Fighter.new(fighter_b))
+  puts "The winner of match #{i} is ....... #{match.winner.name}"
+end
+  
