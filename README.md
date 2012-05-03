@@ -6,7 +6,7 @@ A Game engine with Fighters, turns, and Matches
 Your Assignment
 ---------------
 
-1. Instead of randomly selecting the winner of a turn, use the Move's ranking to determine a winner
+1. Instead of randomly selecting the winner of a turn, use the Move's ranking to determine a winner (Done)
 2. Output to the screen a listing of the turns and who won
 
 Extra Credit (challenging)
