@@ -39,7 +39,7 @@ class Match
 	
 	def fight!
 	  round_num = 1
-    @turns.select do |turn|
+    @turns.each do |turn|
       puts "Round #{round_num}. FIGHT!"
       if turn.move_a == turn.winner
         puts "Round won by #{@opponent_a.name}"
