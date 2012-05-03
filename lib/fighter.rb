@@ -1,16 +1,16 @@
 require_relative "move"
 class Fighter
+  include Comparable
 
-	attr_reader :name
-	def initialize(name)
-		@name = name
-	end
+  attr_reader :name
+  attr_accessor :points
 
-    def strike
-      Move.new(:strike)
-    end
+  def initialize(name)
+    @name = name
+    @points = 0
+  end
 
-    def block
-      Move.new(:block)
-    end
+  def <=>(other)
+    self.points <=> other.points
+  end
 end
