@@ -4,8 +4,6 @@ class Fighter
 	attr_reader :name
 	def initialize(name)
 		@name = name
-		@strike = Move.new(:strike)
-		@block = Move.new(:block)
 	end
 
     def strike
