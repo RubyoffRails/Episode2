@@ -8,4 +8,8 @@ describe Turn do
 	it "should have a winner" do
 		[strike_a, strike_b].should include Turn.new(strike_a, strike_b).winner
 	end
+
+  it "should win higher ranking move" do
+    Turn.new(strike_a, strike_b).winner.ranking.should eq([strike_a.ranking, strike_b.ranking].max)
+  end
 end
