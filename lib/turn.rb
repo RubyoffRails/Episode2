@@ -1,6 +1,6 @@
 require_relative "move"
 class Turn
-	attr_reader :winner
+	attr_reader :winner, :move_a, :move_b
 	def initialize(move_a, move_b)
 		@move_a = move_a
 		@move_b = move_b
