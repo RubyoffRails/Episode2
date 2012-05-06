@@ -12,23 +12,21 @@ class Match
 	def opponents
 		[@opponent_a, @opponent_b]
 	end
-
-	def winner
-		if winner_count_for_opponent(@opponent_a) > winner_count_for_opponent(@opponent_b)
-			@opponent_a
-		else
-			@opponent_b
-		end
+	
+	def score
+    a = @turns.select{ |turn| @opponent_a == turn.winning_fighter }.count
+    b = @turns.select{ |turn| @opponent_a == turn.losing_fighter }.count
+    if a > b
+      {:winning_score => a, :winning_fighter => @opponent_a, :losing_score => b, :losing_fighter => @opponent_b}
+    else
+      {:winning_score => b, :winning_fighter => @opponent_b, :losing_score => a, :losing_fighter => @opponent_a}
+    end
 	end
-
-	def winner_count_for_opponent(opponent)
-		@turns.select{ |turn| opponent.strike == turn.winner}.count
-	end
-
+	 
 	private
 	def build_turns
 		13.times.map do
-			Turn.new(@opponent_a.strike, @opponent_b.strike)
+			Turn.new(@opponent_a, @opponent_a.strike, @opponent_b, @opponent_b.strike)
 		end
 	end
 
