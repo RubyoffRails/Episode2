@@ -14,7 +14,13 @@ class Turn
 
 	private
 	def determine_winning_move	
-	  @move_a.ranking > @move_b.ranking ? @move_a : @move_b
+	  #@move_a.ranking > @move_b.ranking ? @move_a : @move_b
+	  
+	  if @move_a.type == :strike && @move_b.type == :strike
+	    @move_a.ranking > @move_b.ranking ? @move_a : @move_b
+	  else (@move_a.type == :strike && @move_b.type == :block) || (@move_a.type == :block && @move_b.type == :strike)
+	    [@move_a, @move_b].sample
+	  end
   end
   
   def determine_losing_move	
