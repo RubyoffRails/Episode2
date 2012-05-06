@@ -8,7 +8,9 @@ class Turn
 	end
 
 	private
+  # The ranking is set to a random value only once.
+  # Therefore the winner for each round will always be the same.
 	def determine_winner
-		[@move_a, @move_b].sample
-	end	
+    [@move_a, @move_b].max_by { |move| move.ranking }
+  end
 end
