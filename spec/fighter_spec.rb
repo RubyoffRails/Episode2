@@ -14,4 +14,11 @@ describe Fighter do
 	it "should have a name" do
 		Fighter.new("Mike Tyson").name.should eq("Mike Tyson")
 	end
+	
+	it "should be type strike if user chooses strike" do
+    hrm = subject.choose_move_type
+    hrm.stub!(:gets){ "1\n" }
+    hrm.stub!(:gets){ "2\n" }
+  end
+  
 end

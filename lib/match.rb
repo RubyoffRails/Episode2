@@ -26,7 +26,7 @@ class Match
 	private
 	def build_turns
 		13.times.map do
-			Turn.new(@opponent_a, @opponent_a.strike, @opponent_b, @opponent_b.strike)
+			Turn.new(@opponent_a, @opponent_a.choose_move_type, @opponent_b, @opponent_b.choose_move_type)
 		end
 	end
 
