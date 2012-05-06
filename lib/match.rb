@@ -24,9 +24,19 @@ class Match
 	end
 	 
 	private
-	def build_turns
+	def build_turns	  
 		13.times.map do
-			Turn.new(@opponent_a, @opponent_a.choose_move_type, @opponent_b, @opponent_b.choose_move_type)
+      begin
+  	    move_a = @opponent_a.choose_move_type
+  	    move_b = @opponent_b.choose_move_type
+        if move_a.type == :block && move_b.type == :block
+          raise "Both fighters may not block. Please choose moves again." 
+        end
+  	  rescue Exception => e  
+  	    puts e.message
+  	    retry
+  	  end
+      Turn.new(@opponent_a, move_a, @opponent_b, move_b)
 		end
 	end
 
