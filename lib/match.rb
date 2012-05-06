@@ -25,19 +25,25 @@ class Match
 		@turns.select{ |turn| opponent.strike == turn.winner}.count
 	end
 
+  def replay
+    @turns.each_with_index do |turn, index|
+      winner = winner_for_round(turn) 
+      puts "Turn #{index + 1}: #{winner.name} won the round with a move ranking of #{winner.strike.ranking}"
+    end
+  end
+
 	private
 
 	def build_turns
 		13.times.map do
 			turn = Turn.new(@opponent_a.strike, @opponent_b.strike)
-      winner_for_round(turn)
+      puts "#{winner_for_round(turn).name} won that round!"   
       turn
 		end
 	end
 
   def winner_for_round(turn)
     turn_winner = @opponent_a.strike == turn.winner ? @opponent_a : @opponent_b   
-    puts "#{turn_winner.name} won that round!"
   end
 
 end

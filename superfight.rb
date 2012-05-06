@@ -9,3 +9,9 @@ fighter_b = $stdin.gets.chomp
 match = Match.new(Fighter.new(fighter_a), Fighter.new(fighter_b))
 
 puts "The winner of match is ....... #{match.winner.name}"
+
+puts "==================================================="
+
+puts "Let's see that again"
+
+match.replay
