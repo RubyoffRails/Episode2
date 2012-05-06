@@ -29,13 +29,9 @@ class Match
 	def build_turns
 		13.times.map do
 			turn = Turn.new(@opponent_a.strike, @opponent_b.strike)
-      if @opponent_a.strike == turn.winner
-        puts "#{@opponent_a.name} wins that round."
-        turn
-      else 
-        puts "#{@opponent_b.name} wins that round."
-        turn
-      end
+      turn_winner = @opponent_a.strike == turn.winner ? @opponent_a : @opponent_b
+      puts "#{turn_winner.name} wins that round!"
+      turn
 		end
 	end
 
