@@ -9,7 +9,7 @@ describe Move do
 	it "can be a block" do
 		Move.new(:block).type.should eq(:block)
 	end
-	it "has a ranking" do
+	it "should have a ranking" do
 		(1..100).should include Move.new(stub).ranking 
 	end
 end

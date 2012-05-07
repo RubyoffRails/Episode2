@@ -10,21 +10,21 @@ describe Match do
 	it "should have two opponents" do
 		subject.opponents.should eq([bob, fred])
 	end
+
 	it "should have 13 turns" do
 		subject.turns.count.should eq(13)
 	end
+
 	it "should have a winner" do
-		[bob,fred].should include subject.winner
+		[bob,fred].should include subject.score[:winning_fighter]
 	end
 
-	it "should declare bob the winner if bob wins more" do
-		subject.stub(:winner_count_for_opponent).with(bob) {8}			
-		subject.stub(:winner_count_for_opponent).with(fred) {5}			
-		subject.winner.should eq(bob)
-	end
-	it "should declare fred the winner if fred wins more" do
-		subject.stub(:winner_count_for_opponent).with(bob) {3}
-		subject.stub(:winner_count_for_opponent).with(fred) {10}			
-		subject.winner.should eq(fred)
-	end
+  it "should output a score that equals 13" do 
+    (subject.score[:winning_score] + subject.score[:losing_score]).should eq(13)
+  end
+  
+  it "should ensure that the winner has the highest score" do
+    (subject.score[:winning_score] > subject.score[:losing_score]).should be_true
+  end
+  
 end
