@@ -27,7 +27,7 @@ class Match
 
   def replay
     @turns.each_with_index do |turn, index|
-      puts "Turn #{index + 1}: #{winner_for_round(turn)} won that round." 
+      puts "Turn #{index + 1}: #{turn.winner.name} won that round!"
     end
   end
 
@@ -35,16 +35,11 @@ class Match
 
 	def build_turns
 		13.times.map do
-			turn = Turn.new(@opponent_a.strike, @opponent_b.strike)
-      puts "#{winner_for_round(turn).name} won that round!"   
-      # @opponent_a.generate_new_strikes
-      # @opponent_b.generate_new_strikes
+			turn = Turn.new(@opponent_a, @opponent_b)
+      puts "#{turn.winner.name} won that round!"   
+      @opponent_a.generate_new_strikes
+      @opponent_b.generate_new_strikes
       turn
 		end
 	end
-
-  def winner_for_round(turn)
-    @opponent_a.strike == turn.winner ? @opponent_a : @opponent_b   
-  end
-
 end
