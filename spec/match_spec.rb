@@ -27,4 +27,10 @@ describe Match do
 		subject.stub(:winner_count_for_opponent).with(fred) {10}			
 		subject.winner.should eq(fred)
 	end
+
+  it "should receive a method called replay" do
+    subject.should_receive(:replay)
+    subject.replay 
+    # why does this test pass if I haven't yet implemented the method?
+  end
 end
