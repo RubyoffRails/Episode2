@@ -2,10 +2,10 @@ require 'rspec'
 require_relative "../lib/turn"
 
 describe Turn do
-	let(:strike_a) { Move.new(:strike) }
-	let(:strike_b) { Move.new(:strike) }
+	let(:fighter_a) { Fighter.new(mock) }
+	let(:fighter_b) { Fighter.new(mock) }
 
 	it "should have a winner" do
-		[strike_a, strike_b].should include Turn.new(strike_a, strike_b).winner
+		[fighter_a, fighter_b].should include Turn.new(fighter_a, fighter_b).winner
 	end
 end
