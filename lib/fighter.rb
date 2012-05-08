@@ -6,11 +6,19 @@ class Fighter
 		@name = name
 		@strike = Move.new(:strike)
 		@block = Move.new(:block)
-		@last_move = nil;
+		@last_move = random_move #default to a random move
 	end
 
-	def move
-		@last_move = [@strike, @block].sample
-		@last_move
+	def move=(value)
+		if value.nil?
+			@last_move = random_move
+		else
+			@last_move = (value.to_sym == :strike ? @strike : @block)
+		end
 	end
+
+	private
+		def random_move
+			[@strike, @block].sample
+		end
 end

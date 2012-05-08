@@ -16,6 +16,7 @@ describe Fighter do
 	end
 
 	it "should return a valid move" do
-		subject.move.should be_a(Move)
+		subject.move = "strike"
+		subject.last_move.should be_a(Move)
 	end
 end

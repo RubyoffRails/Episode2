@@ -10,10 +10,18 @@ describe Turn do
 		[fighter_a, fighter_b].should include Turn.new(fighter_a, fighter_b).winner
 	end
 
-	it "should choose a winner based on highest move ranking" do
+	it "should have a loser" do
+		[fighter_a, fighter_b].should include Turn.new(fighter_a, fighter_b).loser
+	end
+
+	it "should choose the winner a strike vs a block randomly" do
+		#how do you test for a random result?
+	end
+
+	it "should choose a winner based on highest move ranking for strike vs strike" do
+		fighter_a.move = :strike
+		fighter_b.move = :strike
 		turn = Turn.new(fighter_a, fighter_b)
-		winner = turn.winner
-		loser = turn.loser
-		winner.last_move.ranking.should be > loser.last_move.ranking
+		turn.winner.last_move.ranking.should be > turn.loser.last_move.ranking
 	end
 end
