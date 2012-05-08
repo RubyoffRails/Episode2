@@ -12,13 +12,14 @@ class Fighter
 	def move=(value)
 		if value.nil?
 			@last_move = random_move
+		elsif value.is_a? Move
+			@last_move = value
 		else
 			@last_move = (value.to_sym == :strike ? @strike : @block)
 		end
 	end
 
-	private
-		def random_move
-			[@strike, @block].sample
-		end
+	def random_move
+		[@strike, @block].sample
+	end
 end

@@ -1,12 +1,28 @@
 Dir["./lib/*.rb"].each {|file| require file }
 
-puts "What is your first fighter's name?"
-fighter_a_name = $stdin.gets
-puts "What is your second fighter's name?"
-fighter_b_name = $stdin.gets
+puts "\n\n"
+print "Wellllllcommmmmeee "
+sleep 0.5
+print "to the "
+sleep 0.5
+print "Suppppppper Fight!"
 
 puts "\n\n"
-puts "Leeettttttttttttttt's get ready to rummmmmmmbbbblllllllleeeeee!"
+
+sleep 0.5
+
+puts "What is your name?"
+fighter_a_name = gets.chomp
+puts "What is your opponents name?"
+fighter_b_name = gets.chomp
+
+puts "\n\n"
+print "Leeettttttttttttttt's "
+sleep 0.5
+print "get ready to "
+sleep 0.5
+print "rummmmmmmbbbblllllllleeeeee!"
+
 puts "\n\n"
 sleep 0.5
 
@@ -15,13 +31,41 @@ fighter_b = Fighter.new(fighter_b_name)
 
 match = Match.new(fighter_a, fighter_b)
 
-round = 1
+puts "How many rounds in this match? (should be an odd number)"
+total_rounds = gets.to_i
+total_rounds = 13 if total_rounds == 0
+total_rounds += 1 if total_rounds%2 == 0 #force an odd number of rounds
+
+sleep 0.5
+
+puts "Preparing for a #{total_rounds} round match."
+
+puts "\n"
+
+available_moves = [:strike, :block]
+
 fighter_a_rounds_won = 0
-match.turns.each do |turn|
+total_rounds.times.each do |round|
+	print "Round #{round+1}..."
+	sleep 0.5
+	print "fight!"
+	puts "\n"
+	puts "Do you want to strike (1) or block (2)?"
+	move = gets.chomp
+	puts "\n"
+	move = available_moves[move.to_i-1] if ["1", "2"].include? move
+
+	if !available_moves.include? move.to_sym
+		move = available_moves.sample.to_s
+		puts "Invalid move. Randomly chose a #{move} for you."
+	end
+	turn = match.take_turn move
 	fighter_a_rounds_won+=1 if turn.winner == fighter_a
-	puts "The winner for round #{round} is #{turn.winner.name}"
-	round += 1
-	sleep 1
+
+	winner_name = turn.winner.name
+	winner_name = "You" if turn.winner == fighter_a
+	puts "#{winner_name} won with a #{turn.winner.last_move.type}"
+	puts "\n"
 end
 
 puts "\n\n"
@@ -35,14 +79,14 @@ else
 	rounds = match.turns.count - fighter_a_rounds_won
 end
 
-puts "The winner of match with #{rounds} rounds won is......."
-puts "\n"
+print "The winner of match with #{rounds} rounds won is......."
 
 sleep 1.5
 
-puts match.winner.name
+print "#{match.winner.name}!!" if match.winner == fighter_b
+print "YOU!!" if match.winner == fighter_a
 
 sleep 2
 puts "\n\n"
-puts "Thank you for joining us. The gift shop is open!"
+puts ["Thank you for joining us. The gift shop is open!", "Don't forget to tip your waitress!", "No refunds."]
 puts "\n\n"
