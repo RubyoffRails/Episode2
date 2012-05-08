@@ -88,5 +88,5 @@ print "YOU!!" if match.winner == fighter_a
 
 sleep 2
 puts "\n\n"
-puts ["Thank you for joining us. The gift shop is open!", "Don't forget to tip your waitress!", "No refunds."]
+puts ["Thank you for joining us. The gift shop is open!", "Don't forget to tip your waitress!", "No refunds."].sample
 puts "\n\n"

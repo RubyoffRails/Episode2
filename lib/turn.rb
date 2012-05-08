@@ -32,6 +32,7 @@ class Turn
 				@winner = @fighter_b
 			end
 		else
+			@fighter_b.move = "strike" #change the cpu fighter to a strike
 			determine_winner
 		end
 	end	
