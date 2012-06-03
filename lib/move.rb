@@ -5,5 +5,5 @@ class Move
 		@type = type
 		@ranking = rand(100)
 	end
-
+	
 end
