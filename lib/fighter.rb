@@ -1,10 +1,15 @@
 require_relative "move"
 class Fighter
 
-	attr_reader :strike, :block, :name
+	attr_reader :name, :fight
 	def initialize(name)
 		@name = name
-		@strike = Move.new(:strike)
-		@block = Move.new(:block)
+    @fight = []
 	end
+
+  def hit(name)
+    @hit = Move.new(name)
+    @fight << @hit
+    return @hit
+  end
 end

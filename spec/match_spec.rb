@@ -18,13 +18,13 @@ describe Match do
 	end
 
 	it "should declare bob the winner if bob wins more" do
-		subject.stub(:winner_count_for_opponent).with(bob) {8}			
-		subject.stub(:winner_count_for_opponent).with(fred) {5}			
+		subject.stub(:winner_count_for_opponent).with(bob) {8}
+		subject.stub(:winner_count_for_opponent).with(fred) {5}
 		subject.winner.should eq(bob)
 	end
 	it "should declare fred the winner if fred wins more" do
 		subject.stub(:winner_count_for_opponent).with(bob) {3}
-		subject.stub(:winner_count_for_opponent).with(fred) {10}			
+		subject.stub(:winner_count_for_opponent).with(fred) {10}
 		subject.winner.should eq(fred)
 	end
 end
