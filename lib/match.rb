@@ -22,13 +22,24 @@ class Match
 	end
 
 	def winner_count_for_opponent(opponent)
-		@turns.select{ |turn| opponent.strike == turn.winner}.count
+		@turns.select{ |turn| opponent.strike == turn[:winner]}.count
 	end
+	
+	def print_turns
+	  @turns.each do |turn|
+	    puts turn[:text]
+    end
+  end
 
 	private
 	def build_turns
 		13.times.map do
-			Turn.new(@opponent_a.strike, @opponent_b.strike)
+			turn = Turn.new(@opponent_a.strike, @opponent_b.strike)
+			if turn.winner == @opponent_a.strike
+        {winner: turn.winner, text: "Opponent A -- #{@opponent_a.name} -- won"}
+      else
+        {winner: turn.winner, text: "Opponent B -- #{@opponent_b.name} -- won"}
+      end
 		end
 	end
 

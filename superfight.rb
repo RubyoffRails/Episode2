@@ -8,4 +8,6 @@ fighter_b = $stdin.gets
 
 match = Match.new(Fighter.new(fighter_a), Fighter.new(fighter_b))
 
+match.print_turns
+
 puts "The winner of match is ....... #{match.winner.name}"
