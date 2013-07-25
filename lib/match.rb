@@ -27,23 +27,26 @@ class Match
 	
 	def print_turns
 	  @turns.each do |turn|
-	    puts turn[:text]
+	    print turn[:text]
     end
   end
   
   def replay
     print_turns
-    puts "The winner of match is ....... #{winner.name}"
+    print "The winner of match is ....... #{winner.name}\n"
   end
 
 	private
 	def build_turns
 		13.times.map do
-			turn = Turn.new(@opponent_a.strike, @opponent_b.strike)
-			if turn.winner == @opponent_a.strike
-        {winner: turn.winner, text: "Opponent A -- #{@opponent_a.name} -- won"}
+			turn = Turn.new(@opponent_a.fight, @opponent_b.fight)
+			text = "Opponent A: #{@opponent_a.name} #{turn.move_a.type}"\
+			       " #{turn.move_a.ranking}\nOpponent B: #{@opponent_b.name} "\
+			       "#{turn.move_b.type} #{turn.move_b.ranking}\n"
+			if turn.winner == @opponent_a.fight
+        {winner: turn.winner, text: text + "Winner: Opponent A\n"}
       else
-        {winner: turn.winner, text: "Opponent B -- #{@opponent_b.name} -- won"}
+        {winner: turn.winner, text: text + "Winner: Opponent B\n"}
       end
 		end
 	end
