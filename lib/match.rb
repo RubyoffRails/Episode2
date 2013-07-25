@@ -30,6 +30,11 @@ class Match
 	    puts turn[:text]
     end
   end
+  
+  def replay
+    print_turns
+    puts "The winner of match is ....... #{winner.name}"
+  end
 
 	private
 	def build_turns
