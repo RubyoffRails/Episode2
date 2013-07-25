@@ -7,4 +7,8 @@ class Fighter
 		@strike = Move.new(:strike)
 		@block = Move.new(:block)
 	end
+	
+	def fight
+	  [@strike, @block].sample
+  end
 end

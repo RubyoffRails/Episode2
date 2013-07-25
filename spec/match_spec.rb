@@ -5,7 +5,7 @@ describe Match do
 	let(:bob) { Fighter.new("bob") }
 	let(:fred) { Fighter.new("fred") }
 
-	subject {Match.new(bob,fred) }
+	subject { Match.new(bob,fred) }
 
 	it "should have two opponents" do
 		subject.opponents.should eq([bob, fred])
@@ -27,4 +27,15 @@ describe Match do
 		subject.stub(:winner_count_for_opponent).with(fred) {10}			
 		subject.winner.should eq(fred)
 	end
+	
+	it "should print turns when requested" do
+	  $stdout.should_receive(:write).exactly(13).times
+	  subject.print_turns
+  end
+  
+  it "should print all turns and then the winner when replay is called" do
+    $stdout.should_receive(:write).exactly(14).times
+    #$stdout.should_recieve(:puts).exactly(1).times
+	  subject.replay
+  end
 end
