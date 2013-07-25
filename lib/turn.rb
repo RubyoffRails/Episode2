@@ -4,11 +4,10 @@ class Turn
 	def initialize(move_a, move_b)
 		@move_a = move_a
 		@move_b = move_b
-		@winner = determine_winner	
+		@winner = winner_for_turn(@move_a, @move_b)	
 	end
 
-	private
-	def determine_winner
-		[@move_a, @move_b].sample
+	def winner_for_turn(move_a, move_b)
+		move_a.ranking > move_b.ranking ? @move_a : @move_b
 	end	
 end
