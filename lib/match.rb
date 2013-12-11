@@ -7,6 +7,8 @@ class Match
 		@opponent_a = opponent_a
 		@opponent_b = opponent_b
 		@turns = build_turns
+		@fighter_a = fighter_a
+		@fighter_b = fighter_b
 	end
 	
 	def opponents
