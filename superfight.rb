@@ -31,15 +31,23 @@ class Move
 		@leg_sweep = leg_sweep
 	end
 
-	def moves
+	def values
 		strike = 50
 		block = 40
 		leg_sweep = 60
 	end
+
+	def moves
+		move = Move.new
+		# test
+		move.values{strike: 50, block: 40, leg_sweep: 60}
+		puts moves.values.to_i
+
+	end
 end
 
 match = Match.new(Fighter.new(@fighter_a), Fighter.new(@fighter_b)) do
-	3.times.map do
+	13.times.map do
 		match = Match.new
 	    if @fighter_a.moves > @fighter_b.moves
 	        puts "Fighter A  -- #{@fighter_a.name} -- won"
