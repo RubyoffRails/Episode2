@@ -1,14 +1,14 @@
 require_relative "fighter"
 require_relative "turn"
 class Match
-	
+
 	attr_reader :turns
 	def initialize(opponent_a, opponent_b)
 		@opponent_a = opponent_a
 		@opponent_b = opponent_b
 		@turns = build_turns
 	end
-	
+
 	def opponents
 		[@opponent_a, @opponent_b]
 	end
