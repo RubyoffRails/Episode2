@@ -6,7 +6,7 @@ class Match
 	def initialize(opponent_a, opponent_b)
 		@opponent_a = opponent_a
 		@opponent_b = opponent_b
-		@turns = build_turns
+		build_turns
 	end
 
 	def opponents
@@ -22,14 +22,21 @@ class Match
 	end
 
 	def winner_count_for_opponent(opponent)
-		@turns.select{ |turn| opponent.strike == turn.winner}.count
+		@turns.select{ |winner| opponent == winner}.count
 	end
 
 	private
 	def build_turns
+		@turns = []
 		13.times.map do
-			Turn.new(@opponent_a.strike, @opponent_b.strike)
+			turn = Turn.new(@opponent_a.strike, @opponent_b.strike)
+			if @opponent_a.strike == turn.winner
+				@turns << @opponent_a
+				puts "#{@opponent_a.name} won this round!"
+			else
+				@turns << @opponent_b
+				puts "#{@opponent_b.name} won this round!"
+			end
 		end
 	end
-
 end

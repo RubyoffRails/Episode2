@@ -27,4 +27,6 @@ describe Match do
 		subject.stub(:winner_count_for_opponent).with(fred) {10}
 		subject.winner.should eq(fred)
 	end
+
+	$stdout = StringIO.new
 end

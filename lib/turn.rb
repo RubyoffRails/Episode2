@@ -4,11 +4,11 @@ class Turn
 	def initialize(move_a, move_b)
 		@move_a = move_a
 		@move_b = move_b
-		@winner = determine_winner	
+		@winner = determine_winner
 	end
 
 	private
 	def determine_winner
 		[@move_a, @move_b].sample
-	end	
+	end
 end
