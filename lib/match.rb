@@ -28,14 +28,14 @@ class Match
 	private
 	def build_turns
 		@turns = []
-		13.times.map do
+		13.times do |x|
 			turn = Turn.new(@opponent_a.strike, @opponent_b.strike)
 			if @opponent_a.strike == turn.winner
 				@turns << @opponent_a
-				puts "#{@opponent_a.name} won this round!"
+				puts "#{@opponent_a.name} won round #{x+1}!"
 			else
 				@turns << @opponent_b
-				puts "#{@opponent_b.name} won this round!"
+				puts "#{@opponent_b.name} won round #{x+1}!"
 			end
 		end
 	end

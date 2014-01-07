@@ -11,5 +11,5 @@ puts "READY, SET, FIGHT!!!!!!"
 puts "..."
 match = Match.new(Fighter.new(fighter_a), Fighter.new(fighter_b))
 puts "..."
-puts "The winner of match is ....... #{match.winner.name}!!!"
+puts "The winner of the match is ....... #{match.winner.name}!!!"
 puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
