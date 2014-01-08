@@ -9,6 +9,7 @@ class Turn
 
 	private
 	def determine_winner
-		[@move_a, @move_b].sample
+		[@move_a, @move_b].max { |a, b| a.ranking <=> b.ranking }
 	end
 end
+
