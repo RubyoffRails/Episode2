@@ -10,6 +10,7 @@ puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 puts "READY, SET, FIGHT!!!!!!"
 puts "..."
 match = Match.new(Fighter.new(fighter_a), Fighter.new(fighter_b))
+match.announce_turn_winners
 puts "..."
 puts "The winner of the match is ....... #{match.winner.name}!!!"
 puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"

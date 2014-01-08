@@ -25,17 +25,20 @@ class Match
 		@turns.select{ |winner| opponent == winner}.count
 	end
 
+	def announce_turn_winners
+		@turns.each_with_index do |winner, i|
+			puts "#{winner.name} won round #{i+1}!"
+		end
+	end
+
 	private
 	def build_turns
-		@turns = []
-		13.times do |x|
+		@turns = 13.times.map do |x|
 			turn = Turn.new(@opponent_a.strike, @opponent_b.strike)
 			if @opponent_a.strike == turn.winner
-				@turns << @opponent_a
-				puts "#{@opponent_a.name} won round #{x+1}!"
+				@opponent_a
 			else
-				@turns << @opponent_b
-				puts "#{@opponent_b.name} won round #{x+1}!"
+				@opponent_b
 			end
 		end
 	end
