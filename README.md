@@ -34,7 +34,7 @@ end
 
 3. Create a `Match.replay` method that loops through the turns and outputs to the screen a listing of the turns and who won
 
-Eagel level
+Eagle level
 ------------
 
 1. Strike vs Strike and Strike vs Block should let the higher rank win
