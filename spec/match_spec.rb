@@ -28,5 +28,9 @@ describe Match do
 		subject.winner.should eq(fred)
 	end
 
+	it "should be able to provide the winner of a given turn" do
+		[bob.name,fred.name].should include subject.winner_for_turn(1)
+	end
+
 	$stdout = StringIO.new
 end

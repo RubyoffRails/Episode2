@@ -31,9 +31,13 @@ class Match
 		end
 	end
 
+	def winner_for_turn(turn)
+		turns[turn].name
+	end
+
 	private
 	def build_turns
-		@turns = 13.times.map do |x|
+		@turns = 13.times.map do
 			turn = Turn.new(@opponent_a.strike, @opponent_b.strike)
 			if @opponent_a.strike == turn.winner
 				@opponent_a
