@@ -22,13 +22,19 @@ class Match
 	end
 
 	def winner_count_for_opponent(opponent)
-		@turns.select{ |turn| opponent.strike == turn.winner}.count
+		@turns.select{ |turn| opponent == turn.winner}.count
+	end
+
+	def replay
+		@turns.each_with_index.map do |turn, turn_num|
+			"Round #{turn_num+1} -- #{turn.winner.name.chomp} won!"
+		end
 	end
 
 	private
 	def build_turns
-		13.times.map do
-			Turn.new(@opponent_a.strike, @opponent_b.strike)
+		13.times.map do |i|
+			Turn.new(@opponent_a, @opponent_b)
 		end
 	end
 

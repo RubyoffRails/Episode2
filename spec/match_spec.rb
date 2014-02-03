@@ -1,5 +1,7 @@
 require 'rspec'
 require_relative "../lib/match"
+require_relative "../lib/turn"
+
 
 describe Match do
 	let(:bob) { Fighter.new("bob") }
@@ -26,5 +28,10 @@ describe Match do
 		subject.stub(:winner_count_for_opponent).with(bob) {3}
 		subject.stub(:winner_count_for_opponent).with(fred) {10}			
 		subject.winner.should eq(fred)
+	end
+
+	it 'should output the winner of each turn' do
+		fixed_match = Match.new(bob, bob)
+		expect(fixed_match.replay[0..1]).to eq(["Round 1 -- bob won!", "Round 2 -- bob won!"])
 	end
 end
